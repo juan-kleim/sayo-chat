@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">sayo-chat</string>
+    <string name="tv_nao_tem_conta">Não tem conta?</string>
+    <string name="tv_cadastre_se">Cadastre-se</string>
+    <string name="tv_login">Logar</string>
 </resources>

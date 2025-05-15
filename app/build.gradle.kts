@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.sayo_chat"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.sayo_chat"
@@ -33,6 +33,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures{
+        viewBinding = true
     }
 }
 

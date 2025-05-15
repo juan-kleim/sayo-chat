@@ -13,7 +13,13 @@
         android:theme="@style/Theme.Sayochat"
         tools:targetApi="31">
         <activity
+            android:name=".iniciosayochat.CadastroActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".iniciosayochat.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

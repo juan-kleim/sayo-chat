@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primaria">#2081c3</color>
+    <color name="destaque">#42aae1</color>
+    <color name="auxiliar">#78d5d7</color>
+    <color name="auxiliar_1">#a78bfa</color>
+    <color name="auxiliar_2">#34d399</color>
+
+    <!--<color name="auxiliar_3">##2081c3</color>
+    <color name="auxiliar_4">##2081c3</color>
+    <color name="auxiliar_5">##2081c3</color>
+    -->
+
+
 </resources>
