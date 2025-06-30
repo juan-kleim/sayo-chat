@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "426361389293",
+    "project_id": "sayo-chat",
+    "storage_bucket": "sayo-chat.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426361389293:android:e21f5753feba4901218ce4",
+        "android_client_info": {
+          "package_name": "com.example.sayo_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Potugz1NBcrj9klT9fBhH1JGHDo-uFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
