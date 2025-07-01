@@ -9,11 +9,20 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.sayo_chat.R
 import com.example.sayo_chat.databinding.ActivityLoginBinding
 import com.example.sayo_chat.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
     private val binding by lazy{
         ActivityLoginBinding.inflate(layoutInflater)
+    }
+
+    private lateinit var email: String
+    private lateinit var senha: String
+
+    //Firebase
+    private val firebaseAuth by lazy{
+        FirebaseAuth.getInstance()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,5 +44,16 @@ class LoginActivity : AppCompatActivity() {
                 Intent(this, CadastroActivity::class.java)
             )
         }
+
+        binding.btnLogar.setOnClickListener{
+            if( validarCampos() ){
+
+            }
+        }
     }
+
+    private fun validarCampos(): Boolean {
+        return true//todo RESOLVE ISSO AQUI MAN
+    }
+
 }
