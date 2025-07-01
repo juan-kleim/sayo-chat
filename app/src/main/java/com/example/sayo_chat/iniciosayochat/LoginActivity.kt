@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun validarCampos(): Boolean {
-        return true//todo RESOLVE ISSO AQUI MAN
+        return true//todo RESOLVE ISSO AQUI
     }
 
 }
