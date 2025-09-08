@@ -18,82 +18,75 @@ import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
 
-    private val binding by lazy{
-        ActivityLoginBinding.inflate(layoutInflater)
+    private val binding by lazy {
+        ActivityLoginBinding.inflate( layoutInflater )
     }
 
     private lateinit var email: String
     private lateinit var senha: String
 
     //Firebase
-    private val firebaseAuth by lazy{
+    private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView( binding.root)
+        setContentView( binding.root )
         inicializarEventosClique()
-        firebaseAuth.signOut()
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
         verificarUsuarioLogado()
     }
 
     private fun verificarUsuarioLogado() {
-        val usuarioAtual = FirebaseAuth.getInstance().currentUser
-        if( usuarioAtual != null){
+        val usuarioAtual = firebaseAuth.currentUser
+        if( usuarioAtual != null ){
             startActivity(
                 Intent(this, MainActivity::class.java)
             )
         }
-
     }
 
     private fun inicializarEventosClique() {
-        binding.textCadastro.setOnClickListener{
+        binding.textCadastro.setOnClickListener {
             startActivity(
                 Intent(this, CadastroActivity::class.java)
             )
         }
-
-        binding.btnLogar.setOnClickListener{
+        binding.btnLogar.setOnClickListener {
             if( validarCampos() ){
                 logarUsuario()
-
             }
         }
+
     }
 
     private fun logarUsuario() {
+
         firebaseAuth.signInWithEmailAndPassword(
-            email,
-            senha
+            email, senha
         ).addOnSuccessListener {
-            exibirMensagem("Login efetuado")
+            exibirMensagem("Logado com sucesso!")
             startActivity(
-                Intent(this, MainActivity::class.java )
+                Intent(this, MainActivity::class.java)
             )
-        }.addOnFailureListener{ erro ->
+        }.addOnFailureListener { erro ->
+
             try {
                 throw erro
-            }catch ( erroUsuarioInvalido: FirebaseAuthInvalidUserException) {
+            }catch ( erroUsuarioInvalido: FirebaseAuthInvalidUserException){
                 erroUsuarioInvalido.printStackTrace()
-                exibirMensagem("E-mail não cadastrado.")
-            }catch (erroCredenciaisInvalidas: FirebaseAuthInvalidCredentialsException){
+                exibirMensagem("E-mail não cadastrado")
+            }catch ( erroCredenciaisInvalidas: FirebaseAuthInvalidCredentialsException){
                 erroCredenciaisInvalidas.printStackTrace()
-                exibirMensagem("E-mail ou senha estão incorretos.")
+                exibirMensagem("E-mail ou senha estão incorretos!")
             }
+
         }
+
     }
 
     private fun validarCampos(): Boolean {
@@ -101,20 +94,20 @@ class LoginActivity : AppCompatActivity() {
         email = binding.editLoginEmail.text.toString()
         senha = binding.editLoginSenha.text.toString()
 
-        if ( email.isNotEmpty() ){
+        if( email.isNotEmpty() ){//Não está vazio
+
             binding.textInputLayoutLoginEmail.error = null
-            if( senha.isNotEmpty()) {
+            if( senha.isNotEmpty() ){
                 binding.textInputLayoutLoginSenha.error = null
                 return true
             }else{
-                binding.textInputLayoutLoginSenha.error = "Preencha a senha"
+                binding.textInputLayoutLoginSenha.error = "Preencha o e-mail"
                 return false
             }
-        }else {
+
+        }else{//Está vazio
             binding.textInputLayoutLoginEmail.error = "Preencha o e-mail"
             return false
         }
-
     }
-
 }
