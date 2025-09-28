@@ -5,4 +5,9 @@
     </style>
 
     <style name="Theme.Sayochat" parent="Base.Theme.Sayochat" />
+
+    <style name="Arredondar">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>
